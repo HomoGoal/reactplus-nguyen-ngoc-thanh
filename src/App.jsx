@@ -31,6 +31,19 @@ export default function App() {
 
     const { width } = screenRef.current.getBoundingClientRect();
 
+    const listId = [];
+
+    const handleGetId = (index) => {
+      const newID = Math.random() * index * Date.now();
+
+      if (listId?.includes(newID)) {
+        handleGetId(index)
+      } else {
+        listId.push(newID)
+        return newID
+      }
+    }
+
     const newPointList = Array.from({ length: newPoints }, (v, i) => {
       const top = handleGetPosition(width);
       const left = handleGetPosition(width);
@@ -41,7 +54,7 @@ export default function App() {
         zIndex: newPoints - i,
       };
 
-      return { value: i + 1, style, id: i + top + left };
+      return { value: i + 1, style, id: handleGetId(i) };
     });
 
     if (newPoints > 0) {
