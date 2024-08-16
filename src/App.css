@@ -1,0 +1,110 @@
+body {
+  background: black; /* Make it white if you need */
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+h1,
+p {
+  margin: 0;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+  width: 100%;
+}
+
+.game__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  padding: 50px;
+  box-sizing: border-box;
+  background-color: white;
+  color: #72a24d;
+}
+
+.game__inner {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.game__status {
+  text-transform: uppercase;
+}
+
+.game__play {
+  color: lightblue;
+}
+
+.game__pass {
+  color: #72a24d;
+}
+
+.game__fail {
+  color: red;
+}
+
+.game__field {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  gap: 30px;
+  width: 70%;
+}
+
+.game__button {
+  width: 70%;
+  text-transform: capitalize;
+}
+
+.game__screen {
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+  border: 1px solid green;
+  border-radius: 5px;
+}
+
+.game__number {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  background-color: white;
+  border-radius: 50%;
+  border: 1px solid black;
+  font-weight: 700;
+  transition: background-color 1s;
+}
+
+.game__selected {
+  display: none;
+  background-color: red;
+  color: white;
+  animation: fadeOut 1.5s;
+}
+
+@keyframes fadeOut {
+  from {
+    display: block;
+  }
+
+  to {
+    display: none;
+  }
+}
