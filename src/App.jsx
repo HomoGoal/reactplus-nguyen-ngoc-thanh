@@ -1,7 +1,7 @@
 import "./App.css";
 import React, { useState, useRef } from "react";
 import { statusList } from "./data";
-import { handleGetMinute, handleGetPosition } from "./helper";
+import { handleGetPosition } from "./helper";
 
 export default function App() {
   const [first, setFirst] = useState(true);
@@ -19,7 +19,7 @@ export default function App() {
     setTimer(0);
 
     timerRef.current = setInterval(() => {
-      setTimer((timer) => timer + 1);
+      setTimer((timer) => timer + 0.1);
     }, 100);
   };
 
@@ -33,9 +33,9 @@ export default function App() {
 
     const listId = [];
 
-    const handleGetId = (index) => {
-      const newID = Math.random() * index * Date.now();
+    const handleGetId = (index, top, left) => {
 
+      const newID = Math.random() + index + top + left;
       if (listId?.includes(newID)) {
         handleGetId(index)
       } else {
@@ -54,7 +54,7 @@ export default function App() {
         zIndex: newPoints - i,
       };
 
-      return { value: i + 1, style, id: handleGetId(i) };
+      return { value: i + 1, style, id: handleGetId(i, top, left) };
     });
 
     if (newPoints > 0) {
@@ -106,7 +106,7 @@ export default function App() {
         </div>
         <div className="game__field">
           <p>Time:</p>
-          <p>{handleGetMinute(timer)}</p>
+          <p>{timer.toFixed(1)}s</p>
         </div>
         <button className="game__button" onClick={handleRestart}>
           {first ? "play" : "restart"}
